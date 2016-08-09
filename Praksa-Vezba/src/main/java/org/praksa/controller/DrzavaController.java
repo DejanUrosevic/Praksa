@@ -3,7 +3,9 @@ package org.praksa.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.praksa.dao.DrzavaDao;
 import org.praksa.model.Drzava;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,25 +21,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/drzava")
 public class DrzavaController 	
 {
-	@RequestMapping(value="/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Drzava> getState(@PathVariable int id) 
+	
+	@Autowired
+	DrzavaDao drzavaDao;
+	
+	@RequestMapping(value="/{naziv}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Drzava> getState(@PathVariable String naziv) 
 	{
-		List<Drzava> lista = new ArrayList<Drzava>();
-		lista.add(new Drzava(1, "Mauricijus"));
-		lista.add(new Drzava(2, "Egipat"));
+		Drzava d = new Drzava();
+		d.setNaziv(naziv);
+		drzavaDao.save(d);
 		
-		for(Drzava d : lista)
-		{
-			if(d.getSifra() == id)
-			{
-				return new ResponseEntity<Drzava>(d, HttpStatus.OK);
-			}
-		}
-		
-		return new ResponseEntity<Drzava>(HttpStatus.NOT_FOUND);
-		
-		
-
+		return new ResponseEntity<Drzava>(HttpStatus.OK);
 	}
 
+	
 }
