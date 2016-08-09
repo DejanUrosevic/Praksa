@@ -1,0 +1,8 @@
+package org.praksa.controller;
+
+@Controller
+@RequestMapping("/drzava")
+public class DrzavaController 
+{
+	
+}

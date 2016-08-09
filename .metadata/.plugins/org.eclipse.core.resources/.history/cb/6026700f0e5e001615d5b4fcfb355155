@@ -1,0 +1,7 @@
+package org.praksa.model;
+
+public class Drzava 
+{
+	private int sifra;
+	private String naziv;
+}

@@ -1,0 +1,6 @@
+package org.praksa.application;
+
+@SpringBootApplication
+public class Application {
+
+}
