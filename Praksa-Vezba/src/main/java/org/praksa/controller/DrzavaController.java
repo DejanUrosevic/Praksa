@@ -42,5 +42,17 @@ public class DrzavaController
 		return new ResponseEntity<List<Drzava>>((List<Drzava>) drzavaDao.findAll(), HttpStatus.OK);
 	}
 
+	@RequestMapping(value="/find/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Drzava> getOneStates(@PathVariable int id) 
+	{
+		
+		return new ResponseEntity<Drzava>(drzavaDao.findOne(id), HttpStatus.OK);
+	}
 	
+	@RequestMapping(value="delete/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Drzava> getDeleteStates(@PathVariable int id) 
+	{
+		drzavaDao.delete(id);
+		return new ResponseEntity<Drzava>(HttpStatus.OK);
+	}
 }

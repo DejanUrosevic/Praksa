@@ -9,6 +9,7 @@ import org.praksa.db.DBConnection;
 import org.springframework.data.repository.CrudRepository;
 
 public abstract class GenericDaoBean<T> implements CrudRepository<T, Integer> {
+
 	SessionFactory sessionFactory = DBConnection.getSessionFactory();
 	Session session = sessionFactory.openSession();
 	private Class<T> classGeneric;
@@ -27,14 +28,15 @@ public abstract class GenericDaoBean<T> implements CrudRepository<T, Integer> {
 	@Override
 	public void delete(Integer arg0) {
 		// TODO Auto-generated method stub
+		session.beginTransaction();
+		session.delete(findOne(arg0));
+		session.getTransaction().commit();
 	}
 
 	@Override
 	public void delete(T arg0) {
 		// TODO Auto-generated method stub
-		session.beginTransaction();
-		session.delete(arg0);
-		session.getTransaction().commit();
+	
 
 	}
 
@@ -73,7 +75,9 @@ public abstract class GenericDaoBean<T> implements CrudRepository<T, Integer> {
 	@Override
 	public T findOne(Integer arg0) {
 		// TODO Auto-generated method stub
-		return null;
+		T entity;
+		entity = (T) session.load(classGeneric, arg0);
+		return entity;
 	}
 
 	@Override
