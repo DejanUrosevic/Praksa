@@ -28,7 +28,8 @@
 
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
-
+		
         <mapping class="org.praksa.model.Drzava" />
+        <mapping class="org.praksa.model.NaseljenoMesto" />
     </session-factory>
 </hibernate-configuration>

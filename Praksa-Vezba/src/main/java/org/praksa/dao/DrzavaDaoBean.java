@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DrzavaDaoBean extends GenericDaoBean<Drzava> implements DrzavaDao{
-
+ 
 }
