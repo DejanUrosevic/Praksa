@@ -34,6 +34,13 @@ public class DrzavaController
 		
 		return new ResponseEntity<Drzava>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Drzava>> getAllStates() 
+	{
+		
+		return new ResponseEntity<List<Drzava>>((List<Drzava>) drzavaDao.findAll(), HttpStatus.OK);
+	}
 
 	
 }

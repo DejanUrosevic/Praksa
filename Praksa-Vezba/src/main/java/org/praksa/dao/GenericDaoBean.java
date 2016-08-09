@@ -1,5 +1,8 @@
 package org.praksa.dao;
 
+import java.lang.reflect.ParameterizedType;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.praksa.db.DBConnection;
@@ -8,7 +11,13 @@ import org.springframework.data.repository.CrudRepository;
 public abstract class GenericDaoBean<T> implements CrudRepository<T, Integer> {
 	SessionFactory sessionFactory = DBConnection.getSessionFactory();
 	Session session = sessionFactory.openSession();
-
+	private Class<T> classGeneric;
+	
+	public GenericDaoBean() {
+		classGeneric = (Class<T>) ((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0]; 
+	}
+	
+	
 	@Override
 	public long count() {
 		// TODO Auto-generated method stub
@@ -50,7 +59,9 @@ public abstract class GenericDaoBean<T> implements CrudRepository<T, Integer> {
 	@Override
 	public Iterable<T> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		String tableName = classGeneric.getSimpleName();
+		Query q = session.createQuery("select x from " + tableName + " x");
+		return q.list();
 	}
 
 	@Override
