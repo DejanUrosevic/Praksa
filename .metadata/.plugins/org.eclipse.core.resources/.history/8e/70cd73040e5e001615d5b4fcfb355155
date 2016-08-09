@@ -1,7 +1,0 @@
-package org.praksa.model;
-
-public class Drzava 
-{
-	private long id;
-	private String naziv;
-}

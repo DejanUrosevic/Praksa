@@ -1,7 +1,0 @@
-package org.praksa.controller;
-
-@Controller 
-public class DrzavaController 
-{
-	
-}
