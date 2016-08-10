@@ -13,7 +13,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"org.praksa.controller", "org.praksa.dao", "org.praksa.service"})
+@ComponentScan({"org.praksa.controller", "org.praksa.dao"})
+
 public class Application {
 	
 	 public static void main(String[] args) 
@@ -22,8 +23,8 @@ public class Application {
 	        System.out.println(ctx.getDisplayName());
 	        
 	        
-	        System.out.println("ovo je prvi spring boot projekat");
-	        
+	        System.out.println("This is my first Spring Boot Example");
+
 	 }
 
 }
