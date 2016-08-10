@@ -23,7 +23,11 @@ public class Application {
 	        System.out.println(ctx.getDisplayName());
 	        
 	        
+<<<<<<< HEAD
 	        System.out.println("This is my first Spring Boot Example faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaad");
+=======
+	        System.out.println("This is my first Spring Boot Example aaaaaaaaaaaaaaa");
+>>>>>>> proba
 
 	 }
 
