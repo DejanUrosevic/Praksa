@@ -36,7 +36,9 @@ public abstract class GenericDaoBean<T> implements CrudRepository<T, Integer> {
 	@Override
 	public void delete(T arg0) {
 		// TODO Auto-generated method stub
-	
+		session.beginTransaction();
+		session.delete(arg0);
+		session.getTransaction().commit();
 
 	}
 
